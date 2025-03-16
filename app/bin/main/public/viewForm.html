@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/table.css">
+    <title>Listar Formularios</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>¡Hola <span th:text="${USER}"></span>! - Respuestas</h2>
+        
+        <nav role="custom-dropdown">
+            <input type="checkbox" id="button">
+            <label for="button" onclick></label>
+            
+            <ul>
+                <li><a href="/login.html" class="nav-link">Cerrar Sesión</a></li>
+                <li>
+                    <form action="/createUpdateForm" method="post">
+                        <button type="submit" class="nav-link">Nuevo Formulario</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/createUpdateUser" method="post">
+                        <button type="submit" class="nav-link">Nuevo Usuario</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/listUser" method="get">
+                        <button type="submit" class="nav-link">Listar Usuario</button>
+                    </form>
+                </li>
+                <li><a href="/offlineForms.html" class="nav-link">OFFLINE</a></li>
+            </ul>
+        </nav>
+
+        <ul class ="responsive-table">
+            
+            <li class="table-header">
+                <div class="col  ">Nombre</div>
+                <div class="col  ">Sector</div>
+                <div class="col  ">Nivel</div>
+                <div class="col  ">Latitud</div>
+                <div class="col  ">Longitud</div>
+                <div class="col  ">Usuario</div>
+                <div class="col  ">Action</div>
+              </li>
+            <li class="table-row" th:each="form : ${formList}">
+                
+                <div class="col  " data-label="Nombre" th:text="${form.name}"></div>
+                <div class="col  " data-label="Sector" th:text="${form.sector}"></div>
+                <div class="col  " data-label="Nivel" th:text="${form.scholarLevel}"></div>
+                <div class="col  " data-label="Latitud" th:text="${form.latitude}"></div>
+                <div class="col  " data-label="Longitud" th:text="${form.longitude}"></div>
+                <div class="col  " data-label="Usuario" th:text="${form.user != null} ? ${form.user.username} : 'admin'"></div>
+                <div class="col  " data-label="Action">
+                    <div class="d-flex gap>2">
+                        <form action="/createUpdateForm" method="post" class="d-inline">
+                            <input type="hidden" name="id" th:value="${form.id}">
+                            <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                        </form>
+                        <span class="mx-2 d-none d-md-inline">|</span>
+                        <form action="/deleteForm" method="post" class="d-inline">
+                            <input type="hidden" name="id" th:value="${form.id}">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                        <span class="mx-2 d-none d-md-inline">|</span>
+                        <form action="/map" method="get" class="d-inline">
+                            <input type="hidden" name="lat" th:value="${form.latitude}">
+                            <input type="hidden" name="lon" th:value="${form.longitude}">
+                            <button type="submit" class="btn btn-success btn-sm">Mapa</button>
+                        </form>	
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

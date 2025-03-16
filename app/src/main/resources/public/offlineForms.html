@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" manifest="offline.appcache">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/table.css">
+    <title>Listar Formularios</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>¡Hola <span th:text="${USER}"></span>! - Formularios Fuera de Línea</h2>
+        
+        <button class="btn btn-custom" style="color:rgb(212, 229, 240)" onclick="loadPendingRecordsDashboard()">
+            <i class="fas fa-sync act" ></i> Actualizar
+        </button>
+        <nav role="custom-dropdown">
+            <input type="checkbox" id="button">
+            <label for="button" onclick></label>
+            <ul>
+                <li><a href="/login.html" class="nav-link">Cerrar Sesión</a></li>
+                <li>
+                    <form action="/createUpdateForm" method="post">
+                        <button type="submit" class="nav-link">Nuevo Formulario</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/createUpdateUser" method="post">
+                        <button type="submit" class="nav-link">Nuevo Usuario</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/listForm" method="get">
+                        <button type="submit" class="nav-link">Listar Formulario</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/listUser" method="get">
+                        <button type="submit" class="nav-link">Listar Usuario</button>
+                    </form>
+                </li>
+                
+            </ul>
+        </nav>
+
+        
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col  ">Nombre</div>
+                <div class="col  ">Sector</div>
+                <div class="col  ">Nivel</div>
+                <div class="col  ">Latitud</div>
+                <div class="col  ">Longitud</div>
+                <div class="col  ">Usuario</div>
+                <div class="col  ">Action</div>
+              </li>
+            <li class="table-row">
+                <div class="col" data-label="offlineList" id="offlineList"></div>
+            </li>
+        </ul>
+    </div>
+    <script src="/js/offlinePending.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

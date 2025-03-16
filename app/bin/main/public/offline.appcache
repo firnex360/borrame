@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# v12 - Para obligar al cambio bueno mantener una versión.
+# Esto es un comentario.
+
+#Trama que indica que 
+CACHE:
+/html5/
+/public/createForm.html
+/public/offlineForm.html
+/public/offline.html
+
+NETWORK:
+/
+/api/*
+
+FALLBACK:
+/ /public/offline.html
