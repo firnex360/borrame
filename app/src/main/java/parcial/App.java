@@ -48,7 +48,7 @@ public class App {
         var app = Javalin.create(/* HABILITAR RUTA ESTATICA */ javalinConfig -> {
             javalinConfig.staticFiles.add("/public", Location.CLASSPATH);
             javalinConfig.fileRenderer(new JavalinThymeleaf());
-        }).start(1000);
+        }).start(7000);
 
         app.before("/", ctx -> {
             ctx.header("Access-Control-Allow-Origin", "*");

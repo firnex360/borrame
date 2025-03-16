@@ -16,6 +16,9 @@
     <div class="container">
         <h2>¡Hola <span th:text="${USER}"></span>! - Formularios Fuera de Línea</h2>
         
+        <button class="btn btn-custom" style="color:rgb(212, 229, 240)" onclick="loadPendingRecordsDashboard()">
+            <i class="fas fa-sync act" ></i> Actualizar
+        </button>
         <nav role="custom-dropdown">
             <input type="checkbox" id="button">
             <label for="button" onclick></label>
@@ -45,9 +48,6 @@
             </ul>
         </nav>
 
-        <button class="btn btn-custom" onclick="loadPendingRecordsDashboard()">
-            <i class="fas fa-sync"></i> Actualizar
-        </button>
         
         <ul class="responsive-table">
             <li class="table-header">
@@ -59,7 +59,9 @@
                 <div class="col  ">Usuario</div>
                 <div class="col  ">Action</div>
               </li>
-            <li class="table-row" id="offlineList"></li>
+            <li class="table-row">
+                <div class="col" data-label="offlineList" id="offlineList"></div>
+            </li>
         </ul>
     </div>
     <script src="/js/offlinePending.js"></script>
